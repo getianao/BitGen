@@ -1,0 +1,198 @@
+conifg_name: "ac_config"
+
+common_params:
+  # Input
+  input-size: 1000000
+  repeat-input: 1
+  multi-input: 1
+  split-input: 1
+  regex_num_from_file: -1
+  # Compilation
+  parallel_compile_parabix: 1
+  parallel_compile_cuda_lto: 0
+  warmup_iters: 8
+  exec_iters: 8
+
+schemes:
+
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Brill"] # 92
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 512
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 256
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 16
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 4
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["CAV"] # 1103
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 384
+      # Compilation
+      cuda-register-num: 128
+      cuda_block_size: 256
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 2
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Dotstar"] # 714
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 384
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 512
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 4
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 1
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Protomata"] # 19.0
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 256
+      # Compilation
+      cuda-register-num: 128
+      cuda_block_size: 512
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 16
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 4
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Snort"] # 402
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 384
+      # Compilation
+      cuda-register-num: 128
+      cuda_block_size: 512
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 32
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 1
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Yara"] # 546
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 512
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 512
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 4
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 1
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Bro217"] # 2574
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 512
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 256
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 4
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 8
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["ExactMatch"] # 2174
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 0
+      regex_group_number: 256
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 384
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 4
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 6
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["Ranges1"] # 1426
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 512
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 512
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 8
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3"
+    type: "ac"
+    app: ["TCP"] # 2032
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      parallel_compile_cuda: 1
+      regex_group_number: 384
+      # Compilation
+      cuda-register-num: 64
+      cuda_block_size: 512
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 1
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+

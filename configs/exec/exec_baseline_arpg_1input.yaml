@@ -1,0 +1,25 @@
+conifg_name: "exec_baseline_1regex_8input"
+
+common_params:
+  # Input
+  input-size: 1000000
+  multi-input: 1
+
+schemes:
+  - name: "icgrep"
+    type: "icgrep"
+    env: "python ${BITGEN_ROOT}/scripts/run_icgrep.py"
+    params:
+  # - name: "icgrep2"
+  #   type: "icgrep2"
+  #   env: "python ${BITGEN_ROOT}/scripts/run_icgrep2.py"
+  #   params:
+  # - name: "hs"
+  #   type: "hs"
+  #   env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+  #   params:
+  - name: "ngap"
+    type: "ngap"
+    env: "python ${BITGEN_ROOT}/scripts/run_ngap.py"
+    params:
+

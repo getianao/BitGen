@@ -1,0 +1,8 @@
+/^\x00+/
+/^download\x7c\d+\x7c\d/
+/^(\d+\x24)?(\d+)?[nxcsd]/
+/agent_(win|lin|mac)_helper\.jar$/
+/filename=[^\n]*?\x2evsd[\x22\x27\s]/
+/\x26log_sub=.*?[\x3B\x26\x60\x7C\x24]/
+/^Host\x3a[^\r\n]*smartprotectorpro\x2ecom/
+/(^|\x0d\x0a)MAIL\x20FROM\x3a\x20[^\x0d\x0a]*?\x60/

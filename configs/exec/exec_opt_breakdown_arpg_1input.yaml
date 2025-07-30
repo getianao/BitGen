@@ -1,0 +1,258 @@
+conifg_name: "ac_config"
+
+common_params:
+  # Input
+  input-size: 1000000
+  repeat-input: 1
+  multi-input: 1
+  split-input: 1
+  regex_num_from_file: -1
+  cuda_block_size: 512
+  cuda-register-num: 96
+  # Compilation
+  parallel_compile_parabix: 1
+  parallel_compile_cuda: 1
+  parallel_compile_cuda_lto: 0
+
+  warmup_iters: 8
+  exec_iters: 8
+
+schemes:
+  # O1
+  - name: "ac_cuda_fuse_basic"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 0
+      pass-short-circuit: 0
+      pass-graph-break: 2
+  - name: "ac_cuda_fuse_adv"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 0
+      pass-short-circuit: 0
+      pass-graph-break: 0
+  - name: "ac_cuda_fuse_all"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 0
+      pass-short-circuit: 0
+      pass-graph-break: -1
+
+  # O2
+  - name: "ac_cuda_fuse_all_o2_1"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 1
+      pass-short-circuit: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o2_2"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 2
+      pass-short-circuit: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o2_4"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 4
+      pass-short-circuit: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o2_8"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o2_16"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 16
+      pass-short-circuit: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o2_32"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 32
+      pass-short-circuit: 0
+      pass-graph-break: -1
+
+# O3
+  - name: "ac_cuda_fuse_all_o3_1"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 1
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_2"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 2
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_4"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 4
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_8"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 8
+      pass-short-circuit-syncpoint: 0
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_0_sync"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 8
+      pass-short-circuit-interval-disable: 1
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_1_sync"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 1
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_2_sync"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 2
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_4_sync"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 4
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+  - name: "ac_cuda_fuse_all_o3_8_sync"
+    type: "ac"
+    env: "python ${BITGEN_ROOT}/scripts/run_bitgen.py"
+    params:
+      # Input
+      backend: "cuda"
+      regex_group_number: 256
+      # Compilation
+      pass-cc-advanced: 1
+      pass-cc-advanced-max: 8
+      pass-short-circuit: 1
+      pass-short-circuit-interval: 8
+      pass-short-circuit-syncpoint: 1
+      pass-graph-break: -1
+

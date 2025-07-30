@@ -1,0 +1,45 @@
+conifg_name: "exec_baseline_1regex_8input"
+
+common_params:
+  # Input
+  input-size: 1000000
+  multi-input: 1
+
+schemes:
+  - name: "hs"
+    type: "hs"
+    env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+    params:
+      threads : 1
+  - name: "hs_2"
+    type: "hs"
+    env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+    params:
+      threads : 2
+  - name: "hs_4"
+    type: "hs"
+    env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+    params:
+      threads : 4
+  - name: "hs_8"
+    type: "hs"
+    env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+    params:
+      threads : 8
+  # - name: "hs_16"
+  #   type: "hs"
+  #   env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+  #   params:
+  #     threads : 16
+  # - name: "hs_32"
+  #   type: "hs"
+  #   env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+  #   params:
+  #     threads : 32
+  # - name: "hs_12"
+  #   type: "hs"
+  #   env: "python ${BITGEN_ROOT}/scripts/run_hs.py"
+  #   params:
+  #     threads : 12
+  
+
