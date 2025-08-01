@@ -178,8 +178,8 @@ The following scripts will run the evaluation to reproduce the main results from
 
 These scripts execute the throughput and breakdown experiments. The process may take several hours.
 ```bash
-./scripts/run_throughput.sh
-./scripts/run_breakdown.sh
+./scripts/run_throughput.sh  # 1 hour
+./scripts/run_breakdown.sh   # 4 hours
 ```
 
 **Note**: The provided configurations in the `config/` directory are tuned for an NVIDIA RTX 3090. 
