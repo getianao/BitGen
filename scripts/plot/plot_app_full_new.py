@@ -1,10 +1,11 @@
 import os
 import pandas as pd
 import sys
+from scipy.stats import gmean
 import figurePlotter
 from figurePlotter.df2latex import LatexPrinter
-from scripts.plot.process_result import process_two_stage
-from scipy.stats import gmean
+
+from process_result import process_two_stage
 
 
 results_baseline_cpu_csv = os.path.join(

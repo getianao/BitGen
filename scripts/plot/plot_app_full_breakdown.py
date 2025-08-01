@@ -1,7 +1,8 @@
 import os
 import pandas as pd
 import figurePlotter
-from scripts.plot.process_result import process_two_stage
+
+from process_result import process_two_stage
 
 
 
