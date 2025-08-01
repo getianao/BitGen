@@ -201,6 +201,8 @@ python ./scripts/plot/plot_app_full_breakdown.py
 ```
 The resulting plots will be saved in the `results/figures` and `results/tables` directory.
 
+For your reference, we have included results collected on the NVIDIA RTX 3090 and Intel Xeon Silver 4214R CPU, aw well as the figures and tables in the `ref_result` folder.
+
 ## Paper
 Please refer to this paper for more details.
 
